@@ -7,3 +7,9 @@ example of an olympic country:
     participations: []
 }
 */
+
+export interface Olympic{
+        Id:number,
+        country: string,
+        particiaption : Array<object>
+}
