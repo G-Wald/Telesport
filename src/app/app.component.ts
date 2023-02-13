@@ -15,14 +15,7 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.olympicService.loadInitialData().pipe(take(1)).subscribe();
     
-    /*this.interval$ = interval(1000).pipe(
-    filter( value => value % 3 ===0),
-    map(value => value % 2 === 0 ?
-       `Je suis ${value} et je suis pair`:
-       `Je suis ${value} et je suis impair`
-        ),
-       tap(text => this.logger(text))
-    );*/
+    
     
   }
 

@@ -7,9 +7,11 @@ import { HomeComponent } from './pages/home/home.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { OlympicComponent } from './pages/olympic/olympic.component';
 import { ParticipationComponent } from './pages/participation/participation.component';
+import { InformationboxComponent } from './informationbox/informationbox.component';
+import { InformationBoxListComponent } from './information-box-list/information-box-list.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, NotFoundComponent, OlympicComponent, ParticipationComponent],
+  declarations: [AppComponent, HomeComponent, NotFoundComponent, OlympicComponent, ParticipationComponent, InformationboxComponent, InformationBoxListComponent],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],

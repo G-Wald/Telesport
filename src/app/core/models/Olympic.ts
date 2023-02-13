@@ -8,8 +8,10 @@ example of an olympic country:
 }
 */
 
+import { Participation } from "./Participation";
+
 export interface Olympic{
         Id:number,
         country: string,
-        particiaption : Array<object>
+        particiaption : Array<Participation>
 }
