@@ -1,3 +1,17 @@
-<h2>Olympic games app</h2>
-<app-information-box-list></app-information-box-list>
-<p>{{ (olympics$ | async) }} data loaded</p>
+<h2 style="text-align:center">Medals per Country</h2>
+<p>{{ (olympics$ | async) }}</p>
+<div>
+<div><h3>Number of JOs</h3> {{numberJo}}</div>
+<div><h3>Number of Country</h3> {{numberCountry}}</div>
+</div>
+<div class="chart-container" style="display: block">
+    <canvas baseChart
+            [data]="pieChartData"
+            [colors]="pieChartColor"
+            [labels]="pieChartLabels"
+            [chartType]="'pie'"
+            (chartHover)="chartHovered($event)"
+            (chartClick)="chartClicked($event)"></canvas>
+    </div>
+    
+    

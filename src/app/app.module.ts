@@ -6,15 +6,12 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { OlympicComponent } from './pages/olympic/olympic.component';
-import { ParticipationComponent } from './pages/participation/participation.component';
-import { InformationboxComponent } from './informationbox/informationbox.component';
-import { InformationBoxListComponent } from './information-box-list/information-box-list.component';
 import { ChartsModule } from 'ng2-charts';
-import { PiechartComponent } from './piechart/piechart.component';
+import { CountryDetailComponent } from './pages/country-detail/country-detail.component';
 
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, NotFoundComponent, OlympicComponent, ParticipationComponent, InformationboxComponent, InformationBoxListComponent, PiechartComponent],
+  declarations: [AppComponent, HomeComponent, NotFoundComponent, OlympicComponent, CountryDetailComponent],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule,ChartsModule],
   providers: [],
   bootstrap: [AppComponent],

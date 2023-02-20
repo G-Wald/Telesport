@@ -7,11 +7,14 @@ example of an olympic country:
     participations: []
 }
 */
-
 import { Participation } from "./Participation";
 
-export interface Olympic{
-        Id:number,
-        country: string,
-        particiaption : Array<Participation>
+export class Olympic{
+        public Id!:number;
+        public country!: string;
+        public participations!: Array<Participation>;
+
+  constructor() {}
+
+
 }
