@@ -14,25 +14,34 @@ import { __values } from 'tslib';
 })
 export class CountryDetailComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute, private olympicService: OlympicService) { }
+  public olympics$: Olympic;
+  public medailList : number[];
 
-  public olympics$: Observable<any> = of(null);
-  public medailList : number[] = [];
-  public yearList : string[] =[];
-  // Pie
-  public pieChartLabels: string[] = this.yearList;
-  public pieChartData: number[] = this.medailList;
-  public pieChartColor: Color[] = [{
-    backgroundColor: ['rgba(121,61,82,255)', 'rgba(137,161,219,255)', 'rgba(151,128,161,255)', 'rgba(191,224,241,255)', 'rgba(184,203,231,255)', 'rgba(149,96,101,255)']
-  }];
+  private idCountry: string;
 
-
-
-
+  constructor(private route: ActivatedRoute, private olympicService: OlympicService) {
+    this.olympics$ = new Olympic;
+    this.medailList = [];
+    this.idCountry = "";
+  }
+   
+    public yearList : string[] =[];
+    // Pie
+    public pieChartLabels: string[] = this.yearList;
+    public pieChartData: number[] = [];
+    public pieChartColor: Color[] = [{
+      backgroundColor: ['rgba(121,61,82,255)', 'rgba(137,161,219,255)', 'rgba(151,128,161,255)', 'rgba(191,224,241,255)', 'rgba(184,203,231,255)', 'rgba(149,96,101,255)']
+    }];
 
   ngOnInit(): void {
-    const CountryName = this.route.snapshot.params['name']
-    this.olympics$ = this.olympicService.getOlympics().pipe(map(value => value == undefined ? value : this.adder(value,CountryName)));
+    this.idCountry = this.route.snapshot.params['id'];
+    this.olympicService.loadInitialData()
+      .subscribe({
+        next: (value => {
+          console.log("toto" + JSON.stringify(value));
+          //value == undefined ? value : this.adder(value)
+        })
+      });
   }
 
   public chartClicked(e: any): void {
@@ -41,16 +50,15 @@ export class CountryDetailComponent implements OnInit {
   public chartHovered(e: any): void {
   }
 
-  adder(payslist: Array<Olympic>,CountryName : string) {
-    payslist.forEach(pays => {
-      console.log(pays)
-      if(pays.country == CountryName){
-        pays.participations.forEach(participation=>{
-          this.medailList.push(participation.medalsCount);
-          this.yearList.push(participation.year.toString())
-        })}
+  adder(payslist: Array<Olympic>) {
+    const paysListeSelectionne: Olympic[] = payslist.filter(pays => pays.country === this.idCountry );
+      paysListeSelectionne.forEach(pays => {
+          pays.participations.forEach(participation=>{
+            this.medailList.push(participation.medalsCount);
+            this.yearList.push(participation.year.toString());
+          })
+        });
       
-    })
     console.log(`medail ${this.medailList}`);
     console.log(`year ${this.yearList}`);
   };
