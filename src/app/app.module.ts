@@ -9,10 +9,13 @@ import { OlympicComponent } from './pages/olympic/olympic.component';
 import { ParticipationComponent } from './pages/participation/participation.component';
 import { InformationboxComponent } from './informationbox/informationbox.component';
 import { InformationBoxListComponent } from './information-box-list/information-box-list.component';
+import { ChartsModule } from 'ng2-charts';
+import { PiechartComponent } from './piechart/piechart.component';
+
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, NotFoundComponent, OlympicComponent, ParticipationComponent, InformationboxComponent, InformationBoxListComponent],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  declarations: [AppComponent, HomeComponent, NotFoundComponent, OlympicComponent, ParticipationComponent, InformationboxComponent, InformationBoxListComponent, PiechartComponent],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule,ChartsModule],
   providers: [],
   bootstrap: [AppComponent],
 })
