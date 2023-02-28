@@ -16,7 +16,7 @@ export class OlympicService {
   constructor(private http: HttpClient) {}
 
   loadInitialData() {
-    return this.http.get<Olympic>(this.olympicUrl).pipe(
+    return this.http.get<Array<Olympic>>(this.olympicUrl).pipe(
       catchError((error, caught) => {
         // TODO: improve error handling
         console.error(error);

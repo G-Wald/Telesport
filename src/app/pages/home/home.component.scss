@@ -2,3 +2,36 @@
 width: 50%;
 margin: 20px;
 }
+
+.title{
+    margin: 0 auto;
+    background: rgba(4,131,143,255);
+    color: aliceblue;
+}
+
+#cadre{
+    max-width: 50%;
+    padding: 5px;
+    border: solid rgba(4,131,143,255) 4px ;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.flex-div{
+    display: flex;
+    justify-content: center;
+}
+
+.chart-container{
+    
+}
+
+.all-div{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+canvas{
+    margin: 0 auto;
+    }

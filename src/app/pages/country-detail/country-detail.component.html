@@ -1,16 +1,13 @@
-<p>{{ olympics$ }}</p>
-<h2 style="text-align:center"></h2>
+<h2 style="text-align:center">{{countryName}}</h2>
 <div>
-<div><h3>Number of entries</h3> </div>
-<div><h3>Total number medals</h3> </div>
-<div><h3>Total number of athletes</h3> </div>
+<div><h3>Number of entries</h3>{{entriesNumber}} </div>
+<div><h3>Total number medals</h3>{{medalsNumber}} </div>
+<div><h3>Total number of athletes</h3>{{athletesNumber}} </div>
 </div>
 <div class="chart-container" style="display: block">
     <canvas baseChart
-            [data]="pieChartData"
-            [colors]="pieChartColor"
-            [labels]="pieChartLabels"
+            [data]="ChartData"
+            [labels]="ChartLabels"
             [chartType]="'line'"
-            (chartHover)="chartHovered($event)"
-            (chartClick)="chartClicked($event)"></canvas>
-    </div>
+></canvas>
+    </div> 

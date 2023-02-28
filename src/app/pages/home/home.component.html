@@ -1,17 +1,23 @@
-<h2 style="text-align:center">Medals per Country</h2>
-<p>{{ (olympics$ | async) }}</p>
-<div>
-<div><h3>Number of JOs</h3> {{numberJo}}</div>
-<div><h3>Number of Country</h3> {{numberCountry}}</div>
+
+ <div class="all-div">
+        <div id="cadre" class="title">
+                <h2 >Medals per Country</h2>
+        </div>
+        <div class="flex-div">
+                <div id="cadre">
+                        <h3 >Number of JOs</h3> {{numberJo}}
+                </div>
+                <div id="cadre">
+                        <h3 >Number of Country</h3> {{numberCountry}}
+                </div>
+        </div>
+        <div>
+                <canvas baseChart 
+                [data]="pieChartData"
+                [colors]="pieChartColor" 
+                [labels]="pieChartLabels"
+                [chartType]="pieChartType" 
+                (chartClick)="chartClicked($event)"
+                ></canvas>
+        </div>
 </div>
-<div class="chart-container" style="display: block">
-    <canvas baseChart
-            [data]="pieChartData"
-            [colors]="pieChartColor"
-            [labels]="pieChartLabels"
-            [chartType]="'pie'"
-            (chartHover)="chartHovered($event)"
-            (chartClick)="chartClicked($event)"></canvas>
-    </div>
-    
-    

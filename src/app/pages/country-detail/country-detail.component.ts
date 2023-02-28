@@ -1,11 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Olympic } from 'src/app/core/models/Olympic';
-import { filter, interval, map, Observable, tap, take, mergeMap, delay, of, concatMap, exhaustMap, switchMap } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
-import { Color } from 'ng2-charts/lib/color';
 import { OlympicService } from 'src/app/core/services/olympic.service';
 import { __values } from 'tslib';
-
 
 @Component({
   selector: 'app-country-detail',
@@ -13,53 +9,43 @@ import { __values } from 'tslib';
   styleUrls: ['./country-detail.component.scss']
 })
 export class CountryDetailComponent implements OnInit {
-
-  public olympics$: Olympic;
-  public medailList : number[];
-
+  public ChartLabels : string[];
+  public ChartData : number[];
+  public entriesNumber: number;
+  public athletesNumber: number;
+  public medalsNumber: number;
+  public countryName: string;
   private idCountry: string;
 
   constructor(private route: ActivatedRoute, private olympicService: OlympicService) {
-    this.olympics$ = new Olympic;
-    this.medailList = [];
+    this.ChartData = [];
+    this.ChartLabels = [];
+    this.entriesNumber =0;
+    this.athletesNumber =0;
+    this.medalsNumber =0;
+    this.countryName = "";
     this.idCountry = "";
   }
-   
-    public yearList : string[] =[];
-    // Pie
-    public pieChartLabels: string[] = this.yearList;
-    public pieChartData: number[] = [];
-    public pieChartColor: Color[] = [{
-      backgroundColor: ['rgba(121,61,82,255)', 'rgba(137,161,219,255)', 'rgba(151,128,161,255)', 'rgba(191,224,241,255)', 'rgba(184,203,231,255)', 'rgba(149,96,101,255)']
-    }];
 
   ngOnInit(): void {
     this.idCountry = this.route.snapshot.params['id'];
     this.olympicService.loadInitialData()
       .subscribe({
-        next: (value => {
-          console.log("toto" + JSON.stringify(value));
-          //value == undefined ? value : this.adder(value)
+        next: (value => { console.log(value)
+          value.forEach(element => {
+            this.entriesNumber = element.participations.length;
+          if(element.id.toString() == this.idCountry){
+            this.countryName = element.country;
+            element.participations.forEach(participation=>{
+              this.athletesNumber += participation.athleteCount;
+              this.medalsNumber += participation.medalsCount;
+              this.ChartData.push(participation.medalsCount);
+            this.ChartLabels.push(participation.year.toString());
+            })
+          }
+        });
+          console.log( JSON.stringify(value));
         })
       });
   }
-
-  public chartClicked(e: any): void {
-  }
-
-  public chartHovered(e: any): void {
-  }
-
-  adder(payslist: Array<Olympic>) {
-    const paysListeSelectionne: Olympic[] = payslist.filter(pays => pays.country === this.idCountry );
-      paysListeSelectionne.forEach(pays => {
-          pays.participations.forEach(participation=>{
-            this.medailList.push(participation.medalsCount);
-            this.yearList.push(participation.year.toString());
-          })
-        });
-      
-    console.log(`medail ${this.medailList}`);
-    console.log(`year ${this.yearList}`);
-  };
 }

@@ -10,7 +10,7 @@ example of an olympic country:
 import { Participation } from "./Participation";
 
 export class Olympic{
-        public Id!:number;
+        public id!:number;
         public country!: string;
         public participations!: Array<Participation>;
 
