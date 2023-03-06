@@ -5,10 +5,10 @@
         </div>
         <div class="flex-div">
                 <div id="cadre">
-                        <h3 >Number of JOs</h3> {{numberJo}}
-                </div>
+                        Number of JOs <h3>{{numberJo}}</h3>
+                </div> 
                 <div id="cadre">
-                        <h3 >Number of Country</h3> {{numberCountry}}
+                        Number of Country <h3>{{numberCountry}}</h3>
                 </div>
         </div>
         <div>
@@ -17,7 +17,9 @@
                 [colors]="pieChartColor" 
                 [labels]="pieChartLabels"
                 [chartType]="pieChartType" 
+                [options]="pieChartOption"
                 (chartClick)="chartClicked($event)"
                 ></canvas>
         </div>
+       
 </div>

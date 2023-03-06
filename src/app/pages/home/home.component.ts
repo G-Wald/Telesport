@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { OlympicService } from 'src/app/core/services/olympic.service';
-import { ChartType,} from 'chart.js';
+import { ChartType, Chart } from 'chart.js';
 import { Color } from 'ng2-charts/lib/color';
 import { Router } from '@angular/router';
 
@@ -13,11 +13,11 @@ export class HomeComponent implements OnInit {
 
   public pieChartLabels: Array<string>;
   public pieChartData: Array<number>;
+  public pieChartOption: object;
   public idList: Array<number>;
   public numberJo: number;
   public numberCountry: number;
   public medail: number;
-
   public pieChartColor: Color[] = [{
     backgroundColor: ['rgba(121,61,82,255)', 'rgba(137,161,219,255)', 'rgba(151,128,161,255)', 'rgba(191,224,241,255)', 'rgba(184,203,231,255)', 'rgba(149,96,101,255)']
   }];
@@ -31,6 +31,20 @@ export class HomeComponent implements OnInit {
     this.numberJo = 0;
     this.numberCountry = 0;
     this.medail = 0;
+    this.pieChartOption = {
+      responsive: true,
+      legend: false,
+      outlabels: {
+        text: "%l %p",
+        color: "white",
+        stretch: 35,
+        font: {
+          resizable: true,
+          minSize: 12,
+          maxSize: 18
+        }
+      }
+    };
   }
 
   ngOnInit(): void {
@@ -77,7 +91,4 @@ export class HomeComponent implements OnInit {
 
     console.log(e);
   }
-
-
-
 }

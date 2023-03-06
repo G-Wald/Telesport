@@ -1,13 +1,27 @@
-<h2 style="text-align:center">{{countryName}}</h2>
-<div>
-<div><h3>Number of entries</h3>{{entriesNumber}} </div>
-<div><h3>Total number medals</h3>{{medalsNumber}} </div>
-<div><h3>Total number of athletes</h3>{{athletesNumber}} </div>
+<div class="all-div">
+    <div id="cadre" class="title">
+        <h2>{{countryName}}</h2>
+    </div>
+    <div class="flex-div">
+        <div id="cadre">
+            Number of entries<h3>{{entriesNumber}}</h3>
+        </div>
+        <div id="cadre">
+            Total number medals<h3>{{medalsNumber}}</h3>
+        </div>
+        <div id="cadre">
+            Total number of athletes<h3>{{athletesNumber}}</h3>
+        </div>
+    </div>
+    <div class="chart-container" >
+        <canvas baseChart 
+        [data]="ChartData" 
+        [labels]="ChartLabels" 
+        [chartType]="'line'" 
+        [colors]="ChartColor" 
+        [legend]="false"
+        [options]="ChartOption"
+        ></canvas>
+    </div>
+    <button (click)="return()">BACK</button>
 </div>
-<div class="chart-container" style="display: block">
-    <canvas baseChart
-            [data]="ChartData"
-            [labels]="ChartLabels"
-            [chartType]="'line'"
-></canvas>
-    </div> 
