@@ -79,24 +79,14 @@ h2,h3{
         font-size: 4vw;
 
     }
-    body {
-        height: 1005px;
-
-    }
-
     .all-div {
-        height: 98vh;
+        height: 80vh;
         padding-top: 10vh;
     }
+   
+}
 
-    .chart-container {
-        height: 30vh;
-        position: relative;
-        min-height: unset;
+@media only screen and (min-device-width : 820px){
+    canvas{
     }
-
-    canvas {
-        width: 100%;
-    }
-
 }

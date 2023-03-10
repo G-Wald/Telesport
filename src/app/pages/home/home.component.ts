@@ -32,18 +32,13 @@ export class HomeComponent implements OnInit {
     this.numberCountry = 0;
     this.medail = 0;
     this.pieChartOption = {
-      responsive: true,
-      legend: false,
-      outlabels: {
-        text: "%l %p",
-        color: "white",
-        stretch: 35,
-        font: {
-          resizable: true,
-          minSize: 12,
-          maxSize: 18
-        }
-      }
+      responsive: false,
+      legend: { 
+      position: 'right',
+      labels: {
+        fontSize: 20,
+      }},
+      
     };
   }
 
@@ -63,8 +58,6 @@ export class HomeComponent implements OnInit {
                 })
               }
               this.pieChartData.push(this.medail)
-              //this.pieChartData.push(element)
-
             });
             console.log(JSON.stringify(value));
           })

@@ -11,8 +11,10 @@
                         Number of Country <h3>{{numberCountry}}</h3>
                 </div>
         </div>
-        <div>
+        <div class="chart">
                 <canvas baseChart 
+                height="700"
+                width="700"
                 [data]="pieChartData"
                 [colors]="pieChartColor" 
                 [labels]="pieChartLabels"
