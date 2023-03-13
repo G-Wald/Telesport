@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { interval, take, Observable, map, filter,tap } from 'rxjs';
+import { take, Observable, } from 'rxjs';
 import { OlympicService } from './core/services/olympic.service';
 
 @Component({
@@ -8,15 +8,10 @@ import { OlympicService } from './core/services/olympic.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  constructor(private olympicService: OlympicService) {}
+  constructor(private olympicService: OlympicService) { }
 
   interval$!: Observable<string>;
 
   ngOnInit(): void {
-    this.olympicService.loadInitialData().pipe(take(1)).subscribe();
-    
-    
-    
   }
-
 }

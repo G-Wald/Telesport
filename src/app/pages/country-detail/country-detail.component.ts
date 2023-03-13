@@ -55,7 +55,6 @@ export class CountryDetailComponent implements OnInit {
     this.olympicService.loadInitialData()
       .subscribe({
         next: (value => {
-          console.log(value)
           value.forEach(element => {
             this.entriesNumber = element.participations.length;
             if (element.id.toString() == this.idCountry) {
@@ -68,7 +67,6 @@ export class CountryDetailComponent implements OnInit {
               })
             }
           });
-          console.log(JSON.stringify(value));
         })
       });
   }

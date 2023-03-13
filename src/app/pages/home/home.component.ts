@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { OlympicService } from 'src/app/core/services/olympic.service';
-import { ChartType, Chart } from 'chart.js';
+import { ChartType, } from 'chart.js';
 import { Color } from 'ng2-charts/lib/color';
 import { Router } from '@angular/router';
 
@@ -18,6 +18,7 @@ export class HomeComponent implements OnInit {
   public numberJo: number;
   public numberCountry: number;
   public medail: number;
+
   public pieChartColor: Color[] = [{
     backgroundColor: ['rgba(121,61,82,255)', 'rgba(137,161,219,255)', 'rgba(151,128,161,255)', 'rgba(191,224,241,255)', 'rgba(184,203,231,255)', 'rgba(149,96,101,255)']
   }];
@@ -32,13 +33,12 @@ export class HomeComponent implements OnInit {
     this.numberCountry = 0;
     this.medail = 0;
     this.pieChartOption = {
-      responsive: false,
-      legend: { 
-      position: 'right',
-      labels: {
-        fontSize: 20,
-      }},
-      
+      responsive: true,
+      legend: {
+        position: "right",
+        display: true,
+        labels: { fontColor: "black" },
+      },
     };
   }
 
@@ -59,29 +59,19 @@ export class HomeComponent implements OnInit {
               }
               this.pieChartData.push(this.medail)
             });
-            console.log(JSON.stringify(value));
           })
       });
   }
 
   // events
   public chartClicked(e: any): void {
-
     if (e.active.length > 0) {
       const chart = e.active[0]._chart;
       const activePoints = chart.getElementAtEvent(e.event);
       if (activePoints.length > 0) {
-        // get the internal index of slice in pie chart
         var clickedElementIndex = activePoints[0]._index;
-        var label = chart.data.labels[clickedElementIndex];
-        // ratacher à l'ID et le label
-        // get value by index
-        console.log(clickedElementIndex, label)
       }
     }
-    console.log(e.active[0]._index);
     this.router.navigateByUrl(`detail/${clickedElementIndex + 1}`);
-
-    console.log(e);
   }
 }
